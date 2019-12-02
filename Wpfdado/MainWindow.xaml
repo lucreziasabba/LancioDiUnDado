@@ -1,0 +1,16 @@
+﻿<Window x:Class="Wpfdado.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpfdado"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBox Name="txtNum" HorizontalAlignment="Left" Height="70" Margin="50,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150"/>
+        <TextBox Name="txtCasuale" HorizontalAlignment="Left" Height="70" Margin="575,70,0,0" TextWrapping="Wrap" Text="" IsReadOnly="True" VerticalAlignment="Top" Width="150"/>
+        <Button Content="ESTRAZIONE" HorizontalAlignment="Left" Margin="320,90,0,0" VerticalAlignment="Top" Width="140" Height="50" Click="Estrazione_Click"/>
+        <Button Content="RIPROVA" HorizontalAlignment="Left" Margin="320,250,0,0" VerticalAlignment="Top" Width="140" Height="50" Click="Riprova_Click"/>
+
+    </Grid>
+</Window>
