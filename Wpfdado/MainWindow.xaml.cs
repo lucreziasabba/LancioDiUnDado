@@ -20,6 +20,8 @@ namespace Wpfdado
     /// </summary>
     public partial class MainWindow : Window
     {
+        Random random_generator = new Random();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,19 +29,47 @@ namespace Wpfdado
 
         private void Estrazione_Click(object sender, RoutedEventArgs e)
         {
+            int crediti = int.Parse(txtCrediti.Text);
+            if (crediti <= 0)
+                MessageBox.Show("Inserisci un numero di crediti positivo");
+            int RandomNumber = random_generator.Next(1, 7);
             int n = int.Parse(txtNum.Text);
-            Random random_generator = new Random();
-            int RandomNumber = random_generator.Next(1,7);
-            if (n == RandomNumber)
-                txtCasuale.Text = ($"Il numero uscito è {RandomNumber}. Complimenti!Hai vinto!");
-            else if (n != RandomNumber)
-                txtCasuale.Text = ($"Il numero uscito è {RandomNumber}. Ritenta!");
-        }
+            if (n >= 7 || n <= 0)
+                MessageBox.Show("Numero non valido!");
+            bool risposta;
 
+            if (n == RandomNumber)
+            {
+                crediti = crediti * 2;
+                txtCasuale.Text = ($"Il numero uscito è {RandomNumber}. Complimenti!Hai vinto!");
+                txtCrediti.Text = ($"{crediti}");
+                risposta = true;
+            }
+            else
+            {
+                crediti = crediti / 2;
+                txtCasuale.Text = ($"Il numero uscito è {RandomNumber}. Ritenta!");
+                txtCrediti.Text = ($"{crediti}");
+                risposta = false;
+            }
+            if (crediti <= 0)
+                txtCrediti.Text = "Non puoi più giocare, hai finito i crediti";
+            dado.Source = new BitmapImage(new Uri($@"dadi\dado{RandomNumber}.png", UriKind.Relative));
+            numdado.Source = new BitmapImage(new Uri($@"dadi\dado{n}.png", UriKind.Relative));
+            if (risposta)
+                face.Source = new BitmapImage(new Uri($@"faccine\smile.png", UriKind.Relative));
+            else
+                face.Source = new BitmapImage(new Uri($@"faccine\sad.png", UriKind.Relative));
+        }
         private void Riprova_Click(object sender, RoutedEventArgs e)
         {
-             txtNum.Clear();
+            txtNum.Clear();
             txtCasuale.Clear();
+            txtCrediti.Clear();
+            dado.Source = null;
+            numdado.Source = null;
+            face.Source = null;
         }
+
     }
 }
