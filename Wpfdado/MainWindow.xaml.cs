@@ -42,14 +42,14 @@ namespace Wpfdado
             {
                 crediti = crediti * 2;
                 txtCasuale.Text = ($"Il numero uscito è {RandomNumber}. Complimenti!Hai vinto!");
-                txtCrediti.Text = ($"{crediti}");
+                txtCrediti.Text = ($"HAI {crediti} CREDITI!");
                 risposta = true;
             }
-            else
+            else 
             {
                 crediti = crediti / 2;
                 txtCasuale.Text = ($"Il numero uscito è {RandomNumber}. Ritenta!");
-                txtCrediti.Text = ($"{crediti}");
+                txtCrediti.Text = ($"HAI {crediti} CREDITI!");
                 risposta = false;
             }
             if (crediti <= 0)
@@ -60,6 +60,8 @@ namespace Wpfdado
                 face.Source = new BitmapImage(new Uri($@"faccine\smile.png", UriKind.Relative));
             else
                 face.Source = new BitmapImage(new Uri($@"faccine\sad.png", UriKind.Relative));
+            
+            txtCrediti.Text = crediti.ToString();
         }
         private void Riprova_Click(object sender, RoutedEventArgs e)
         {
@@ -70,6 +72,5 @@ namespace Wpfdado
             numdado.Source = null;
             face.Source = null;
         }
-
     }
 }
